@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Biodata Siswa</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .card-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eef2f5;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e9ecef;
+        }
+
+        .info-group:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #6c757d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .value {
+            color: #212529;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .badge {
+            background-color: #007bff;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-back {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Hasil Biodata Siswa</h2>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Nama Lengkap</span>
+            <span class="value" id="outNama">-</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Alamat</span>
+            <span class="value" id="outAlamat">-</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Jurusan</span>
+            <span class="value"><span class="badge" id="outJurusan">-</span></span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Jenis Kelamin</span>
+            <span class="value" id="outJk">-</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Tinggi Badan</span>
+            <span class="value"><span id="outTinggi">-</span> cm</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Berat Badan</span>
+            <span class="value"><span id="outBerat">-</span> kg</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Golongan Darah</span>
+            <span class="value" id="outGolDarah">-</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Hobi</span>
+            <span class="value" id="outHobi">-</span>
+        </div>
+
+        <div class="info-group">
+            <span class="label">Nomor HP</span>
+            <span class="value" id="outHp">-</span>
+        </div>
+
+        <a href="form_biodata.html" class="btn-back">&laquo; Kembali ke Form</a>
+    </div>
+
+    <script>
+        const dataSaved = localStorage.getItem('biodataSiswa');
+
+        if (dataSaved) {
+            const data = JSON.parse(dataSaved);
+
+            document.getElementById('outNama').textContent = data.nama;
+            document.getElementById('outAlamat').textContent = data.alamat;
+            document.getElementById('outJurusan').textContent = data.jurusan;
+            document.getElementById('outJk').textContent = data.jk === 'L' ? 'Laki-laki' : (data.jk === 'P' ? 'Perempuan' : 'Lainnya');
+            document.getElementById('outTinggi').textContent = data.tinggi || '0';
+            document.getElementById('outBerat').textContent = data.berat || '0';
+            document.getElementById('outGolDarah').textContent = data.golDarah;
+            document.getElementById('outHobi').textContent = data.hobi || '-';
+            document.getElementById('outHp').textContent = data.hp || '-';
+        } else {
+            alert('Belum ada data biodata yang disimpan!');
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
