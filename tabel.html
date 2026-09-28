@@ -5,212 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>  
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-<!DOCTYPE html>
-<html> 
-<head>
-<style>
-table, th, td {
-  border: 1px solid rgb(19, 18, 18);
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-  text-align: left;
-}
-</style>
-</head>
-<body>
-
-<h2>DATA Biodata Siswa PPLG</h2>
-
-
-<table style="width:100%">
-
-  <tr>
-    <th>Field/Atribut</th>
-    <th>Keterangan / Hasil input</th>
-  </tr>
-  <tr>
-    <td>Nama</td>
-    <td>Muhammad Wildan Aufa </td>
-  </tr>
-  <tr>
-    <td>Alamat</td>
-    <td>Desa Bukit Kemuning Kec Tapung Hulu Kab Kampar</td>
-  </tr>
-   <tr>
-    <td>Jurusan</td>
-    <td>RPL</td>
-  </tr>
-  <tr>
-    <td>Jenis Kelamin</td>
-    <td>Laki Laki 
-    </td>
-  </tr>
-   <tr>
-    <td>Tinggi Badan (cm)</td>
-    <td>160</td>
-  </tr>
-  <tr>
-    <td>Berat Badan (kg)</td>
-    <td>57</td>
-  </tr>
-  <tr>
-    <td>Hobi</td>
-    <td>Mengaji </td>
-  </tr>
-    <tr>
-    <td>No.HP</td>
-    <td>087769684592</td>
-  </tr>
-</tr>
-     <th colspan="2">Status: Data berhasil divalidasi dan direkap ke dalam tabel.</th>
-</table>
-
-<hr>
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Siswa</title>
-
+    <title>Hasil Biodata Siswa</title>
     <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 30px auto;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
+        body {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        th {
-            background-color: #d9eaf7;
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .card-header {
             text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eef2f5;
+            margin-bottom: 20px;
         }
 
-        h2 {
+        .card-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e9ecef;
+        }
+
+        .info-group:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #6c757d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .value {
+            color: #212529;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .badge {
+            background-color: #007bff;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-back {
+            display: block;
+            width: 100%;
             text-align: center;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
-
-<body>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Siswa</title>
-
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 30px auto;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #d9eaf7;
-            text-align: center;
-        }
-
-        h2 {
-            text-align: center;
-        }
-    </style>
-</head>
-
 <body>
 
-    <h2>Data Siswa</h2>
+    <div class="card">
+        <div class="card-header">
+            <h2>Hasil Biodata Siswa</h2>
+        </div>
 
-    <table>
-        <!-- Judul Kolom -->
-        <tr>
-            <th>Kategori Data</th>
-            <th>Atribut Form</th>
-            <th>Hasil Isian Siswa</th>
-        </tr>
+        <div class="info-group">
+            <span class="label">Nama Lengkap</span>
+            <span class="value" id="outNama">-</span>
+        </div>
 
-        <!-- Identitas Pribadi - Merge 3 Baris -->
-        <tr>
-            <td rowspan="3">Identitas Pribadi</td>
-            <td>Nama:</td>
-            <td>Muhammmad Wildan Aufa </td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Alamat</span>
+            <span class="value" id="outAlamat">-</span>
+        </div>
 
-        <tr>
-            <td>Alamat:</td>
-            <td>Kampar Tapung Hulu Bukit Kemining </td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Jurusan</span>
+            <span class="value"><span class="badge" id="outJurusan">-</span></span>
+        </div>
 
-        <tr>
-            <td>No HP:</td>
-            <td>081217420464</td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Jenis Kelamin</span>
+            <span class="value" id="outJk">-</span>
+        </div>
 
-        <!-- Akademik - 1 Baris -->
-        <tr>
-            <td>Akademik</td>
-            <td>Jurusan:</td>
-            <td> RPL</td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Tinggi Badan</span>
+            <span class="value"><span id="outTinggi">-</span> cm</span>
+        </div>
 
-        <!-- Preferensi - 1 Baris -->
-        <tr>
-            <td>Preferensi</td>
-            <td>Hobi</td>
-            <td>Membaca</td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Berat Badan</span>
+            <span class="value"><span id="outBerat">-</span> kg</span>
+        </div>
 
-       <!-- Pengukuran Badan -->
-<tr>
-    <td>Pengukuran Badan</td>
-    <td>Tinggi dan Berat Badan</td>
-    <td style="padding: 0;">
-        <table style="width: 100%; margin: 0; border-collapse: collapse;">
-            <tr>
-                <td style="border: none; border-bottom: 1px solid black;">
-                    Tinggi: 170 cm normal
-                </td>
-            </tr>
-            <tr>
-                <td style="border: none;">
-                    Berat: 60 kg
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
+        <div class="info-group">
+            <span class="label">Golongan Darah</span>
+            <span class="value" id="outGolDarah">-</span>
+        </div>
 
-        <!-- Lain-lain - 1 Baris -->
-        <tr>
-            <td>Lain-lain</td>
-            <td>Catatan</td>
-            <td>Tidak ada</td>
-        </tr>
+        <div class="info-group">
+            <span class="label">Hobi</span>
+            <span class="value" id="outHobi">-</span>
+        </div>
 
-    </table>
-    
+        <div class="info-group">
+            <span class="label">Nomor HP</span>
+            <span class="value" id="outHp">-</span>
+        </div>
+
+        <a href="form_biodata.html" class="btn-back">&laquo; Kembali ke Form</a>
+    </div>
+
+    <script>
+        const dataSaved = localStorage.getItem('biodataSiswa');
+
+        if (dataSaved) {
+            const data = JSON.parse(dataSaved);
+
+            document.getElementById('outNama').textContent = data.nama;
+            document.getElementById('outAlamat').textContent = data.alamat;
+            document.getElementById('outJurusan').textContent = data.jurusan;
+            document.getElementById('outJk').textContent = data.jk === 'L' ? 'Laki-laki' : (data.jk === 'P' ? 'Perempuan' : 'Lainnya');
+            document.getElementById('outTinggi').textContent = data.tinggi || '0';
+            document.getElementById('outBerat').textContent = data.berat || '0';
+            document.getElementById('outGolDarah').textContent = data.golDarah;
+            document.getElementById('outHobi').textContent = data.hobi || '-';
+            document.getElementById('outHp').textContent = data.hp || '-';
+        } else {
+            alert('Belum ada data biodata yang disimpan!');
+        }
+    </script>
+</body>
+</html>   
 </body>
 </html>
