@@ -7,23 +7,23 @@
 </head>
 <body>
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Siswa - Form Input</title>
+    <title>Sistem Informasi Biodata Siswa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #e1f5fe 50%, #bae6fd 100%);
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,160 +32,329 @@
         }
 
         body {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: var(--bg-gradient);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
-        .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        .main-wrapper {
             width: 100%;
-            max-width: 480px;
+            max-width: 850px;
         }
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 24px;
+        /* Header / Navbar Glassmorphism */
+        .header-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 18px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.6);
         }
+
+        .header-card i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .header-card .title-text h1 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .header-card .title-text h2 {
+            font-size: 20px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* Main Form Container */
+        .form-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .form-card h3 {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        /* Grid Layout (Multi-Kolom) */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .full-width { grid-column: span 3; }
+        .span-2 { grid-column: span 2; }
+        .span-1 { grid-column: span 1; }
 
         .form-group {
-            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
         }
 
         label {
-            display: block;
-            margin-bottom: 6px;
-            color: #444;
+            margin-bottom: 8px;
+            color: var(--text-main);
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        input[type="text"],
-        input[type="number"],
-        select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1.5px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-
-        input[type="text"]:focus,
-        input[type="number"]:focus,
-        select:focus {
-            border-color: #007bff;
-        }
-
-        .radio-group {
+        /* Custom Input dengan Icon Prefix */
+        .input-box {
+            position: relative;
             display: flex;
-            gap: 15px;
             align-items: center;
-            padding-top: 5px;
         }
 
-        .radio-group label {
-            font-weight: normal;
-            margin-bottom: 0;
+        .input-box i.prefix-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-muted);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .input-box input,
+        .input-box select,
+        .input-box textarea {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: #f8fafc;
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-box textarea {
+            padding-left: 42px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .input-box input:focus,
+        .input-box select:focus,
+        .input-box textarea:focus {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .input-box input:focus + i.prefix-icon,
+        .input-box select:focus + i.prefix-icon,
+        .input-box textarea:focus + i.prefix-icon {
+            color: var(--primary);
+        }
+
+        /* Modern Radio Cards */
+        .radio-card-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .radio-card-group label {
+            flex: 1;
+            margin: 0;
             cursor: pointer;
         }
 
-        button {
-            width: 100%;
+        .radio-card-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 12px;
-            background-color: #007bff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            background-color: #f8fafc;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .radio-card-group input[type="radio"]:checked + .radio-btn {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            grid-column: span 3;
+            margin-top: 10px;
+            padding: 14px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width, .span-2, .span-1, .btn-submit {
+                grid-column: span 1;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Biodata Siswa</h2>
-
-        <form id="formBiodata">
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" id="nama" placeholder="Masukkan nama..." required>
+    <div class="main-wrapper">
+        <div class="header-card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div class="title-text">
+                <h1>Sistem Informasi</h1>
+                <h2>BIODATA SISWA</h2>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" id="alamat" placeholder="Masukkan alamat..." required>
-            </div>
-
-            <div class="form-group">
-                <label for="jurusan">Jurusan</label>
-                <select id="jurusan">
-                    <option value="RPL">RPL</option>
-                    <option value="TEI">TEI</option>
-                    <option value="TKJ">TKJ</option>
-                    <option value="TKR">TKR</option>
-                    <option value="TSM">TSM</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Jenis Kelamin</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="jk" value="L" checked> L</label>
-                    <label><input type="radio" name="jk" value="P"> P</label>
-                    <label><input type="radio" name="jk" value="B"> B</label>
+        <div class="form-card">
+            <h3>Input Data Siswa</h3>
+            
+            <form id="formBiodata" class="form-grid">
+                
+                <div class="form-group span-2">
+                    <label for="nama">Nama Lengkap</label>
+                    <div class="input-box">
+                        <input type="text" id="nama" placeholder="Masukkan nama..." required>
+                        <i class="fa-solid fa-user prefix-icon"></i>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="tinggi">Tinggi Badan (cm)</label>
-                <input type="number" id="tinggi" placeholder="Contoh: 170">
-            </div>
+                <div class="form-group span-1">
+                    <label for="jurusan">Jurusan</label>
+                    <div class="input-box">
+                        <select id="jurusan">
+                            <option value="RPL">💻 RPL</option>
+                            <option value="TSM">🔧 TSM</option>
+                            <option value="TKJ">🌐 TKJ</option>
+                            <option value="TKR">🚗 TKR</option>
+                        </select>
+                        <i class="fa-solid fa-graduation-cap prefix-icon"></i>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="berat">Berat Badan (kg)</label>
-                <input type="number" id="berat" placeholder="Contoh: 60">
-            </div>
+                <div class="form-group full-width">
+                    <label for="alamat">Alamat Lengkap</label>
+                    <div class="input-box">
+                        <textarea id="alamat" placeholder="Masukkan alamat lengkap..." required></textarea>
+                        <i class="fa-solid fa-location-dot prefix-icon"></i>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="golDarah">Golongan Darah</label>
-                <select id="golDarah">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="AB">AB</option>
-                    <option value="O">O</option>
-                </select>
-            </div>
+                <div class="form-group span-2">
+                    <label>Jenis Kelamin</label>
+                    <div class="radio-card-group">
+                        <label>
+                            <input type="radio" name="jk" value="L" checked>
+                            <div class="radio-btn"><i class="fa-solid fa-mars"></i> Laki-Laki</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="jk" value="P">
+                            <div class="radio-btn"><i class="fa-solid fa-venus"></i> Perempuan</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="jk" value="B">
+                            <div class="radio-btn"><i class="fa-solid fa-circle-question"></i> Lainnya</div>
+                        </label>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="hobi">Hobi</label>
-                <input type="text" id="hobi" placeholder="Masukkan hobi...">
-            </div>
+                <div class="form-group span-1">
+                    <label for="golDarah">Golongan Darah</label>
+                    <div class="input-box">
+                        <select id="golDarah">
+                            <option value="A">Golongan A</option>
+                            <option value="B">Golongan B</option>
+                            <option value="AB">Golongan AB</option>
+                            <option value="O">Golongan O</option>
+                        </select>
+                        <i class="fa-solid fa-droplet prefix-icon"></i>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="hp">Nomor HP</label>
-                <input type="text" id="hp" placeholder="08xxxxxxxxxx">
-            </div>
+                <div class="form-group span-1">
+                    <label for="tinggi">Tinggi Badan (cm)</label>
+                    <div class="input-box">
+                        <input type="number" id="tinggi" placeholder="Contoh: 170">
+                        <i class="fa-solid fa-ruler-vertical prefix-icon"></i>
+                    </div>
+                </div>
 
-            <button type="submit">Simpan & Pindah Halaman</button>
-        </form>
+                <div class="form-group span-1">
+                    <label for="berat">Berat Badan (kg)</label>
+                    <div class="input-box">
+                        <input type="number" id="berat" placeholder="Contoh: 60">
+                        <i class="fa-solid fa-weight-scale prefix-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group span-1">
+                    <label for="hp">Nomor HP / WhatsApp</label>
+                    <div class="input-box">
+                        <input type="text" id="hp" placeholder="08xxxxxxxxxx">
+                        <i class="fa-solid fa-phone prefix-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="hobi">Hobi</label>
+                    <div class="input-box">
+                        <input type="text" id="hobi" placeholder="Masukkan hobi...">
+                        <i class="fa-solid fa-icons prefix-icon"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>SIMPAN & PINDAH HALAMAN</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </form>
+        </div>
     </div>
 
     <script>
@@ -205,7 +374,7 @@
             };
 
             localStorage.setItem('biodataSiswa', JSON.stringify(dataBiodata));
-            window.location.href = "10rpl3_hasill.html";
+            window.location.href = 'hasil_biodata.html';
         });
     </script>
 
